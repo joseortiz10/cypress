@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import userManager from './store/helpers/userManager';
 
 /** Custom components import section */
-
+/** Material UI import section */
+import {Button} from '@material-ui/core';
 
 function App() {
     const { user } = useSelector(state => state.oidc);
@@ -23,16 +24,16 @@ function App() {
                 <div>
                     <span>{`Welcome ${user.profile.preferred_username}`}</span>
                     <br/>
-                    <button type='button' onClick={logOut}>
+                    <Button color="secondary" onClick={logOut}>
                         Logout
-                    </button>
+                    </Button>
                     <br/>
                 </div>            
             ) : (
                 <div>
-                    <button type='button' onClick={login}>
+                    <Button color="secondary" onClick={login}>
                         Login
-                    </button>
+                    </Button>
                     <br/>
                 </div>
             )
