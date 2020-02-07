@@ -12,13 +12,14 @@ describe("login", () => {
             .then(({ userName, password }) => {
                 cy.login(userName, password)
             })
-            cy.window().its('store').invoke('getState').should('have.keys', ['oidc'])
         })
 
-    it('login invalid credentiales', () => {
+    it('login success 2', () => {
         cy.getByDataCy('btn-login').click()
-        cy.login('adimbptm', 'invalidpassword')
-        cy.contains("Invalid username or password").should('be.visible');
+        cy.get('@usersCredentials')
+            .then(({ userName, password }) => {
+                cy.login(userName, password)
+            })
     })
 })
 
